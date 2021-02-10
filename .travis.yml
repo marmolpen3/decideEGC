@@ -27,8 +27,10 @@ install:
   - tar xfz geckodriver-v0.27.0-linux64.tar.gz
   - sudo mv -f geckodriver /usr/bin
   - sudo chmod +x /usr/bin/geckodriver
-script:
-  - cd decide
-  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+jobs:
+  include:
+    - script:
+      - cd decide
+      - coverage run --branch --source=. ./manage.py test voting/ --keepdb --with-xunit
+      - coverage xml
+      - python-codacy-coverage -r coverage.xml
