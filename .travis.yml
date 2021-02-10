@@ -17,7 +17,7 @@ install:
   - pip install codacy-coverage
   - pip install selenium
   - sudo apt-get install chromium-browser
-  - sudo apt install chromium-chromedriver
+  - sudo apt-get install chromium-chromedriver
   - wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
 	- tar -xzf geckodriver-v0.27.0-linux64.tar.gz
 	- chmod +x geckodriver
