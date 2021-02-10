@@ -83,6 +83,17 @@ class VotingTestCase(BaseTestCase):
                 mods.post('store', json=data)
         return clear
 
+    def test_Voting_toString(self):
+        v = self.create_voting()
+        self.assertEquals(str(v),"test voting")
+        self.assertEquals(str(v.question),"test question")
+        self.assertEquals(str(v.question.options.all()[0]),"option 1 (2)")
+
+    def test_voting_creation(self):
+        v = self.create_voting()
+        voting = Voting.objects.get(name=v.name)
+        self.assertEquals(voting.name,v.name)
+
     def test_complete_voting(self):
         v = self.create_voting()
         self.create_voters(v)
