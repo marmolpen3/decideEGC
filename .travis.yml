@@ -4,6 +4,7 @@ services:
   - postgresql
 addons:
   postgresql: "9.4"
+  chrome: stable
 before_script:
   - psql -U postgres -c "create user decide password 'decide'"
   - psql -U postgres -c "create database test_decide owner decide"
@@ -14,6 +15,14 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install codacy-coverage
+  - pip install selenium
+  - sudo apt-get install chromium-browser
+  - sudo apt install chromium-chromedriver
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
+	- tar -xzf geckodriver-v0.27.0-linux64.tar.gz
+	- chmod +x geckodriver
+	- sudo cp geckodriver /usr/bin/
+	- rm geckodriver-v0.27.0-linux64.tar.gz
 script:
   - cd decide
   - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
