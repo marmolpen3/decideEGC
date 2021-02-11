@@ -13,6 +13,7 @@ before_script:
 language: python
 python:
   - "3.6"
+  - "3.8"
 install:
   - pip install -r requirements.txt
   - pip install codacy-coverage

@@ -28,7 +28,7 @@ class AdminTestCase(StaticLiveServerTestCase):
         self.driver.quit()
         self.base.tearDown()
 
-def test_simpleCorrectLogin(self):
+    def test_simpleCorrectLogin(self):
         self.driver.get(f'{self.live_server_url}/admin/')
         self.driver.find_element_by_id('id_username').send_keys("admin")
         self.driver.find_element_by_id('id_password').send_keys("qwerty",Keys.ENTER)
