@@ -1,21 +1,21 @@
-dist: xenial
-services:
+
+dist: xenial  # opción de distribución xenial
+
+services:     # servicios
   - postgresql
 addons:
   postgresql: "9.4"
   chrome: stable
-before_script:
+before_script:  # ejecutar antes del script
   - psql -U postgres -c "create user decide password 'decide'"
   - psql -U postgres -c "create database test_decide owner decide"
   - psql -U postgres -c "ALTER USER decide CREATEDB"
   - cp decide/local_settings.travis.py decide/local_settings.py
-  - "export DISPLAY=:99.0"
-  - sleep 3
-language: python
-python:
-- '3.6'
-- '3.8'
-install:
+language: python  # lenguaje
+python:   # intérprete
+  - "3.6"
+  - "3.8"
+install:  # instalar las dependecias
   - pip install -r requirements.txt
   - pip install codacy-coverage
   - pip install selenium
@@ -80,6 +80,5 @@ notifications:
   email:
     recipients:
       - marmolpen3@alum.us.es
-      - elenamolino99@gmail.com
-    on_success: never
-    on_failure: always
+    on_success: never # valores: never, always, change
+    on_failure: always # valores: never, always, change
