@@ -7,15 +7,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-from base.tests import BaseTestCase
+from authentication.tests import AuthTestCase
 
 class AdminTestCase(StaticLiveServerTestCase):
 
 
     def setUp(self):
         #Load base test functionality for decide
-        self.base = BaseTestCase()
-        self.base.setUp()
+        self.auth = AuthTestCase()
+        self.auth.setUp()
 
         options = webdriver.ChromeOptions()
         options.headless = True
@@ -26,11 +26,10 @@ class AdminTestCase(StaticLiveServerTestCase):
     def tearDown(self):
         super().tearDown()
         self.driver.quit()
-        self.base.tearDown()
+        self.auth.tearDown()
 
     def test_simpleCorrectLogin(self):
         self.driver.get(f'{self.live_server_url}/admin/')
-        self.driver.find_element(By.ID, "username").click()
         self.driver.find_element(By.ID, "username").send_keys("admin")
         self.driver.find_element(By.ID, "password").send_keys("qwerty")
         self.driver.find_element(By.ID, "password").send_keys(Keys.ENTER)
