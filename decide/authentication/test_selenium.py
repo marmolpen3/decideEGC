@@ -30,9 +30,9 @@ class AdminTestCase(StaticLiveServerTestCase):
 
     def test_simpleCorrectLogin(self):
         self.driver.get(f'{self.live_server_url}/admin/')
-        self.driver.find_element(By.ID, "username").send_keys("admin")
-        self.driver.find_element(By.ID, "password").send_keys("qwerty")
-        self.driver.find_element(By.ID, "password").send_keys(Keys.ENTER)
+        self.driver.find_element(By.ID, "id_username").send_keys("admin")
+        self.driver.find_element(By.ID, "id_password").send_keys("qwerty")
+        self.driver.find_element(By.ID, "id_password").send_keys(Keys.ENTER)
 
         print(self.driver.current_url)
         #In case of a correct loging, a element with id 'user-tools' is shown in the upper right part
