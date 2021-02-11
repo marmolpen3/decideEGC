@@ -13,6 +13,7 @@ before_script:
 language: python
 python:
   - "3.6"
+  - "3.8"
 install:
   - pip install -r requirements.txt
   - pip install codacy-coverage
@@ -27,13 +28,11 @@ install:
   - tar xfz geckodriver-v0.27.0-linux64.tar.gz
   - sudo mv -f geckodriver /usr/bin
   - sudo chmod +x /usr/bin/geckodriver
-jobs:
-  include:
-    - script:
-      - cd decide
-      - coverage run --branch --source=. ./manage.py test voting/ --keepdb --with-xunit
-      - coverage xml
-      - python-codacy-coverage -r coverage.xml
+script:
+  - cd decide
+  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
 notifications:
   email:
     recipients:
