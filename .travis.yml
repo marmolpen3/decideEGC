@@ -20,7 +20,7 @@ install:
   - pip install codacy-coverage
   - pip install selenium
   - sudo apt-get install chromium-browser
-  - wget -N https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip
+  - wget -N https://chromedriver.storage.googleapis.com/88.0.4324.96/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - rm chromedriver_linux64.zip
   - sudo mv -f chromedriver /usr/bin
